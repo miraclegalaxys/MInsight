@@ -9,6 +9,7 @@ from tensorflow.keras import layers, models, callbacks
 from imblearn.over_sampling import SMOTE 
 import pandas as pd
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
@@ -88,24 +89,59 @@ def train_and_evaluate_model(features, labels, patience=10, num_repeats=args.num
         percent_complete = ((repeat + 1) / num_repeats) * 100 # คำนวณเปอร์เซ็นต์ของการทำงานทั้งหมดในแต่ละรอบ 
         print(f'รอบที่ {repeat + 1} สำเร็จแล้ว: {percent_complete:.2f}% Done. ความแม่นยำเฉลี่ยอยู่ที่: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
 
-    print(f'ความแม่นยำที่ดีที่สุดอยู่ที่: {best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
+    print(f'ความแม่นยำสูงสุดอยู่ที่: {best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
     return best_model, best_accuracy # ส่งค่า best_model และ best_accuracy กลับ
 
 
-def predict_next_attack(model, new_data, labels, best_accurary): # สร้างฟังก์ชัน predict_next_attack ที่รับพารามิเตอร์ 3 ตัวคือ model, new_data, labels
+def predict_next_attack(model, new_data, labels, best_accuracy, additional_columns): # สร้างฟังก์ชัน predict_next_attack ที่รับพารามิเตอร์ 3 ตัวคือ model, new_data, labels
     prediction = model.predict(new_data.reshape(1, -1)) # ทำนายคลาสของ new_data โดยใช้ model.predict() และเก็บไว้ในตัวแปร prediction
     predicted_attack = labels.columns[np.argmax(prediction)] # หาชื่อคลาสที่ทำนายได้จาก prediction และเก็บไว้ในตัวแปร predicted_attack
-    print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} ถึง {best_accurary:.2f}%") # แสดงข้อความที่บอกคลาสที่ทำนายได้
+    print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} สูงถึง {best_accuracy:.2f}%")
+    
+    data_dict = {col: [val] for col, val in zip(additional_columns, new_data)}
+    
+    # Add the predicted attack type and accuracy to the dictionary
+    data_dict['Predicted_Attack_Type'] = [predicted_attack]
+    data_dict['Accuracy'] = [best_accuracy]
+    
+    return pd.DataFrame(data_dict)
+
+def save_predict(prediction_df):
+    save_pre = input("\nคุณต้องการบันทึกค่าการทำนายการโจมตีครั้งล่าสุดหรือไม่? (y/n): ")
+    if save_pre == 'y':
+        # Check if the file exists and append the new prediction, otherwise create a new file
+        filepath = 'Prediction.csv'
+        if os.path.exists(filepath):
+            prediction_df.to_csv(filepath, mode='a', index=False, header=False)
+            print(f"\nค่าการทำนายการโจมตีครั้งล่าสุดถูกเพิ่มลงในไฟล์ {filepath} แล้ว")
+        else:
+            prediction_df.to_csv(filepath, index=False)
+            print(f"\nค่าการทำนายการโจมตีครั้งล่าสุดถูกบันทึกลงในไฟล์ {filepath} แล้ว")
+    elif save_pre == 'n':
+        print("\nค่าการทำนายการโจมตีครั้งล่าสุดไม่ได้ถูกบันทึก")
+    else:
+        print("\nคุณได้ป้อนค่าที่ไม่ถูกต้อง โปรดลองอีกครั้ง")
+
+
 
 if __name__ == '__main__': # ตรวจสอบว่าโปรแกรมถูกเรียกใช้โดยตรงหรือไม่
-
+    input("Press Enter To Start:\n") # รับข้อมูลจากผู้ใช้เพื่อเริ่มการทำงาน
+    print("Starting the program...\n") # แสดงข้อความเมื่อผู้ใช้กด Enter เพื่อเริ่มการทำงาน
     numeric_columns = ['Frequency', 'Duration', 'Targets'] # กำหนดคอลัมน์ที่เป็นตัวเลขใน numeric_columns ในที่นี้คือ ['Frequency', 'Duration', 'Targets'] 
     categorical_features = ['Severity'] # กำหนดคอลัมน์ที่เป็นข้อความใน categorical_features ในที่นี้คือ ['Severity']
     filepath = args.filepath # กำหนด path ของไฟล์ CSV ใน filepath โดยใช้ args.filepath
     target_column = 'Attack_Type' # กำหนดคอลัมน์ที่เป็น target ใน target_column ในที่นี้คือ 'Attack_Type' 
 
     features, labels = load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column) # โหลดข้อมูลและทำการประมวลผลข้อมูลโดยใช้ฟังก์ชัน load_and_preprocess_data และเก็บไว้ใน features, labels
-    best_model, best_accurary = train_and_evaluate_model(features, labels, patience=10) # ฝึกและประเมินโมเดลโดยใช้ฟังก์ชัน train_and_evaluate_model และเก็บโมเดลที่ดีที่สุดไว้ใน best_model 
+    best_model, best_accuracy = train_and_evaluate_model(features, labels, patience=10) # ฝึกและประเมินโมเดลโดยใช้ฟังก์ชัน train_and_evaluate_model และเก็บค่า best_model, best_accuracy
     new_data = features[0] # กำหนดข้อมูลใหม่ที่จะทำนายใน new_data โดยใช้ข้อมูลใน features ที่ index เท่ากับ 0
-    predict_next_attack(best_model, new_data, labels, best_accurary) # ทำนายคลาสของข้อมูลใหม่โดยใช้ฟังก์ชัน predict_next_attack
     
+    additional_columns = ['Severity', 'Frequency', 'Duration', 'Targets']  # Define additional columns
+    predicted_attack_df = predict_next_attack(best_model, new_data, labels, best_accuracy, additional_columns)
+    save_predict(predicted_attack_df)
+    
+    input("\nPress Enter To Exit:") # รับข้อมูลจากผู้ใช้เพื่อออกจากโปรแกรม
+    
+        
+    
+
