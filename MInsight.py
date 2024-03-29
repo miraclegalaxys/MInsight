@@ -33,9 +33,9 @@ ascii_art = r'''
 '''
 print(ascii_art)  # Display the ASCII art
 
-credit_license = 'My team'
+credit = 'Created by: '
 
-print(f'Credit: {credit_license}')  # Display the credit/license information
+print(f'{credit}\n\n') # Display the credit/license information
 
 def load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column): # สร้างฟังก์ชัน load_and_preprocess_data ที่รับพารามิเตอร์ 4 ตัวคือ filepath, numeric_columns, categorical_features, target_column
     df = pd.read_csv(filepath) # อ่านไฟล์ CSV จาก filepath และเก็บไว้ในตัวแปร df
