@@ -8,7 +8,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-np', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
-parser.add_argument('-f', '--filepath', type=str, help='Path to the CSV file')
+parser.add_argument('-fp', '--filepath', type=str, help='Path to the CSV file')
 args = parser.parse_args() # นำ argument ที่รับเข้ามาเก็บไว้ในตัวแปร args 
 
 
