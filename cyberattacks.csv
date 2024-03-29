@@ -1,0 +1,1001 @@
+Attack_Type,Severity,Frequency,Duration,Targets
+Ransomware,Low,7,54,32
+Ransomware,Medium,1,23,37
+Malware,Low,2,53,49
+SQL Injection,High,5,42,9
+Ransomware,Medium,7,31,59
+Ransomware,High,9,30,74
+Malware,Low,6,42,55
+DoS,Medium,9,51,94
+SQL Injection,Low,4,46,51
+SQL Injection,Low,8,23,45
+Phishing,High,6,6,34
+DoS,Low,4,28,28
+Phishing,Medium,5,40,59
+DoS,High,8,20,24
+Ransomware,Low,6,23,16
+Phishing,Low,3,59,69
+DoS,Low,7,27,92
+Phishing,Medium,5,16,10
+Ransomware,High,6,27,1
+Phishing,Medium,7,24,34
+DoS,Low,7,41,32
+SQL Injection,High,6,48,41
+Phishing,Medium,9,37,34
+DoS,Low,5,20,56
+Phishing,Low,4,43,30
+Phishing,High,3,51,34
+DoS,Medium,2,51,38
+DoS,Low,1,58,81
+Ransomware,High,3,27,93
+SQL Injection,High,6,12,71
+DoS,High,6,5,26
+DoS,Low,3,5,50
+Ransomware,Medium,5,6,80
+SQL Injection,High,7,37,44
+DoS,Medium,1,37,81
+SQL Injection,High,4,53,82
+Malware,High,6,41,70
+SQL Injection,Medium,9,7,15
+DoS,Low,1,49,79
+Malware,Medium,1,55,99
+Malware,Medium,6,19,75
+Phishing,Low,4,59,50
+Malware,High,9,10,29
+DoS,Medium,6,4,28
+DoS,Low,3,18,59
+Malware,High,7,51,87
+Ransomware,Low,6,5,94
+Malware,Medium,8,10,76
+Malware,Low,6,27,61
+Malware,Low,2,42,96
+SQL Injection,High,1,25,57
+Malware,Low,9,24,33
+Ransomware,High,2,32,48
+Ransomware,Low,7,48,95
+DoS,Low,9,48,8
+DoS,Medium,2,24,28
+Malware,Low,4,25,60
+Malware,Medium,7,37,46
+SQL Injection,Low,3,11,26
+Malware,Medium,8,10,16
+DoS,Low,3,48,89
+Malware,Low,5,35,47
+SQL Injection,Medium,2,20,84
+SQL Injection,Low,9,48,23
+SQL Injection,Low,6,29,72
+Ransomware,Low,2,16,84
+Phishing,Medium,9,58,39
+Ransomware,Medium,9,30,8
+Phishing,High,9,28,10
+DoS,Medium,3,46,62
+Malware,Medium,3,36,49
+Malware,Medium,9,56,12
+Ransomware,Low,9,38,45
+SQL Injection,High,5,46,54
+Phishing,Medium,6,49,86
+Malware,High,4,27,92
+DoS,Low,1,40,3
+Phishing,Low,2,59,69
+Ransomware,High,2,14,23
+DoS,High,7,52,27
+Phishing,High,1,31,7
+SQL Injection,Medium,3,25,85
+SQL Injection,Low,1,40,15
+SQL Injection,Medium,3,54,68
+Malware,Medium,2,1,55
+Ransomware,High,6,9,48
+SQL Injection,High,5,23,99
+Phishing,Low,8,4,13
+SQL Injection,Low,4,9,44
+Phishing,High,1,44,45
+DoS,Low,8,1,82
+Ransomware,Medium,2,21,92
+Malware,Medium,9,35,5
+SQL Injection,Medium,3,45,60
+Malware,Medium,2,36,71
+SQL Injection,High,6,15,41
+Malware,Low,9,11,44
+Malware,Medium,5,18,43
+SQL Injection,High,6,44,45
+SQL Injection,Medium,3,55,13
+DoS,High,1,58,80
+SQL Injection,Low,3,55,39
+Malware,Low,1,26,71
+Ransomware,Medium,7,48,47
+Malware,Low,9,51,80
+DoS,High,9,6,38
+Phishing,Medium,6,4,54
+Phishing,High,5,59,10
+Ransomware,Medium,3,46,89
+Phishing,Medium,1,18,3
+SQL Injection,High,6,28,55
+Phishing,High,8,10,47
+DoS,High,8,37,23
+Ransomware,High,9,12,21
+SQL Injection,Low,9,49,61
+Phishing,High,6,9,11
+DoS,Low,5,57,58
+Ransomware,Medium,5,58,94
+Phishing,Medium,7,37,4
+DoS,Low,2,8,99
+Phishing,Medium,8,4,41
+SQL Injection,Low,8,39,86
+Ransomware,Low,6,23,49
+DoS,High,5,36,67
+Phishing,Low,4,1,79
+SQL Injection,Low,9,38,48
+Phishing,High,9,57,41
+Ransomware,Low,2,23,64
+Phishing,Low,2,44,7
+DoS,Medium,9,43,84
+DoS,High,7,15,22
+Ransomware,Low,8,53,92
+Ransomware,High,3,3,89
+Phishing,High,8,24,80
+Phishing,Low,5,44,28
+Ransomware,Low,3,19,2
+Malware,Medium,6,38,27
+Phishing,High,6,57,92
+Phishing,High,9,2,53
+Phishing,Medium,8,48,32
+DoS,High,5,8,71
+Malware,Low,3,51,16
+SQL Injection,Low,3,28,59
+DoS,High,2,29,3
+SQL Injection,Low,4,47,69
+Phishing,Medium,1,55,44
+Malware,Medium,3,9,80
+Ransomware,High,1,44,13
+SQL Injection,Medium,2,48,77
+Ransomware,Medium,6,35,71
+Malware,Medium,7,47,46
+DoS,Low,5,20,11
+Phishing,High,2,28,81
+Ransomware,High,4,45,33
+Ransomware,Medium,9,52,98
+Ransomware,Low,1,35,81
+Phishing,Low,8,24,33
+DoS,High,6,3,84
+Ransomware,High,4,31,4
+Ransomware,Medium,4,55,7
+Malware,High,1,3,97
+DoS,Low,9,34,31
+Phishing,Medium,4,51,96
+Ransomware,Medium,9,41,48
+SQL Injection,Low,2,7,14
+Phishing,Medium,9,26,31
+Malware,Low,6,53,44
+SQL Injection,Low,1,17,18
+SQL Injection,High,4,24,2
+Ransomware,Medium,6,37,36
+Ransomware,Low,1,53,74
+DoS,High,7,33,94
+DoS,Medium,2,3,8
+DoS,Medium,9,58,91
+Ransomware,Low,6,20,94
+Ransomware,Low,1,16,95
+Phishing,Low,2,47,78
+SQL Injection,Medium,6,25,67
+DoS,Low,8,16,86
+Malware,High,3,41,56
+Ransomware,High,5,54,7
+SQL Injection,Medium,7,27,96
+DoS,High,5,10,70
+Ransomware,Low,7,5,2
+SQL Injection,Medium,3,28,89
+Malware,High,1,2,63
+DoS,High,2,40,72
+Ransomware,Low,4,40,17
+SQL Injection,High,8,47,42
+Malware,Low,8,13,27
+DoS,Medium,6,28,85
+Ransomware,Low,2,45,28
+Phishing,Low,1,10,11
+Malware,Medium,2,35,55
+DoS,Low,6,23,6
+Phishing,Medium,7,15,99
+DoS,Medium,3,30,38
+DoS,Low,7,27,33
+SQL Injection,Medium,8,32,93
+SQL Injection,Medium,3,36,72
+Phishing,Low,2,34,55
+Ransomware,High,7,13,3
+Ransomware,High,9,52,52
+Malware,High,4,5,78
+Phishing,Low,9,30,42
+Ransomware,Low,7,26,35
+SQL Injection,Low,2,32,46
+Malware,High,4,49,11
+Malware,High,8,21,59
+Phishing,High,2,39,55
+Ransomware,High,6,40,13
+SQL Injection,High,9,30,74
+DoS,Medium,6,15,19
+DoS,Medium,3,26,37
+DoS,High,3,13,59
+Malware,Medium,3,31,32
+SQL Injection,High,1,42,90
+SQL Injection,High,3,6,42
+DoS,High,1,33,83
+Malware,High,6,28,41
+DoS,High,2,38,7
+Phishing,High,8,30,48
+Phishing,Medium,7,31,84
+Malware,High,4,12,15
+DoS,Medium,1,5,4
+Malware,Medium,5,59,91
+DoS,Low,2,37,93
+SQL Injection,Low,7,28,63
+SQL Injection,Medium,6,50,42
+DoS,Low,1,56,6
+SQL Injection,High,9,37,55
+Phishing,Medium,8,10,41
+DoS,High,1,56,89
+DoS,Low,7,32,20
+Ransomware,Low,4,47,54
+SQL Injection,Low,3,28,57
+Phishing,Medium,3,51,77
+Malware,High,4,19,80
+Malware,Low,5,18,56
+DoS,Low,6,30,15
+SQL Injection,Low,8,50,57
+Ransomware,Low,3,25,27
+Phishing,Low,4,48,13
+Malware,Medium,5,56,48
+Phishing,Low,7,12,83
+Phishing,High,5,27,27
+Malware,Medium,1,56,21
+Malware,High,4,47,24
+Ransomware,Medium,2,29,24
+Ransomware,High,2,21,42
+Malware,High,7,49,93
+Malware,High,3,11,41
+DoS,Low,3,5,83
+DoS,Medium,9,10,94
+DoS,Low,2,22,88
+SQL Injection,Low,4,36,72
+Ransomware,Medium,7,29,41
+Phishing,Medium,6,13,3
+DoS,Medium,3,57,88
+Malware,Medium,6,30,68
+Malware,Low,2,39,77
+Malware,Medium,4,35,23
+SQL Injection,Medium,2,54,81
+Malware,Low,3,59,76
+Ransomware,High,7,20,27
+Malware,Low,8,6,34
+Phishing,Medium,3,16,71
+Malware,Medium,8,42,92
+SQL Injection,Medium,9,35,32
+SQL Injection,Medium,9,33,23
+Ransomware,Medium,8,30,23
+Ransomware,High,7,45,60
+Ransomware,Medium,5,54,51
+Ransomware,Medium,5,10,45
+Ransomware,Low,4,13,74
+Malware,High,2,12,79
+SQL Injection,High,4,11,27
+Malware,Low,4,12,78
+Malware,High,2,33,68
+Malware,Medium,1,55,15
+SQL Injection,High,9,45,34
+Phishing,High,9,16,55
+Malware,Medium,9,49,72
+Phishing,High,4,5,43
+Ransomware,Low,2,51,15
+Phishing,High,2,51,48
+DoS,Medium,9,5,93
+Phishing,Medium,5,55,69
+DoS,Medium,5,27,55
+Phishing,Low,7,47,59
+DoS,High,2,29,72
+Malware,Low,8,27,93
+Phishing,High,3,53,56
+SQL Injection,Medium,8,21,57
+DoS,Low,5,45,34
+Malware,Low,1,28,87
+Malware,Medium,4,18,4
+Phishing,High,9,7,1
+Ransomware,High,8,50,50
+DoS,Medium,8,17,24
+DoS,High,2,11,43
+SQL Injection,Medium,3,42,59
+Malware,Medium,3,45,44
+DoS,Low,5,24,87
+Malware,High,2,41,56
+Malware,Low,9,43,24
+Ransomware,High,9,17,53
+Phishing,High,5,44,47
+DoS,Low,6,6,25
+Malware,Low,8,47,87
+SQL Injection,Medium,4,8,71
+SQL Injection,High,1,55,35
+SQL Injection,Low,2,30,23
+Malware,Medium,4,21,99
+Ransomware,Low,4,9,12
+SQL Injection,High,8,51,19
+Phishing,Medium,7,21,4
+Phishing,High,6,36,9
+Phishing,High,1,22,92
+Phishing,High,5,21,68
+Ransomware,Medium,1,12,97
+Malware,High,8,50,18
+Ransomware,Low,5,8,81
+Malware,Medium,3,52,58
+Phishing,Low,7,31,73
+SQL Injection,Medium,5,7,43
+DoS,High,6,10,6
+Phishing,Medium,9,32,40
+Ransomware,Medium,5,1,3
+Phishing,High,1,44,86
+Phishing,Low,6,14,4
+Malware,High,8,15,50
+DoS,Medium,4,18,53
+SQL Injection,Low,9,39,81
+SQL Injection,Low,1,2,69
+Ransomware,High,5,21,61
+Phishing,Medium,4,49,36
+Malware,High,8,35,22
+Ransomware,Low,7,42,29
+SQL Injection,Medium,7,21,88
+Ransomware,Low,6,22,70
+SQL Injection,Low,7,10,32
+DoS,Medium,6,38,77
+Ransomware,Medium,2,51,85
+Phishing,Low,5,29,71
+SQL Injection,Low,3,50,97
+Ransomware,Medium,4,46,10
+DoS,Low,1,45,76
+Malware,High,6,43,91
+Ransomware,Medium,3,50,87
+Malware,High,9,58,74
+Phishing,High,2,58,72
+Malware,Medium,2,50,83
+SQL Injection,Medium,1,21,50
+SQL Injection,High,7,41,40
+DoS,Low,2,18,70
+Malware,Medium,5,9,42
+Malware,Medium,1,21,98
+Malware,High,9,8,97
+Malware,Medium,2,36,9
+SQL Injection,High,8,49,95
+Malware,Medium,3,52,46
+Ransomware,Medium,3,59,43
+Ransomware,Medium,6,46,49
+Malware,High,3,38,6
+Phishing,Medium,3,26,68
+Malware,High,7,57,60
+DoS,Low,4,7,30
+DoS,High,4,15,77
+Malware,Low,5,8,3
+SQL Injection,High,2,56,42
+SQL Injection,Low,4,35,6
+SQL Injection,Low,8,59,78
+SQL Injection,High,5,58,7
+SQL Injection,High,5,11,30
+SQL Injection,Low,5,57,72
+SQL Injection,Medium,7,22,67
+Phishing,Medium,6,45,38
+Phishing,Low,3,23,16
+Phishing,Medium,5,10,60
+DoS,Low,9,46,93
+Ransomware,Low,1,11,64
+Malware,Medium,6,28,49
+SQL Injection,High,5,28,90
+Malware,Low,8,22,87
+Phishing,Medium,1,28,1
+SQL Injection,High,9,45,28
+Ransomware,Medium,9,16,67
+Malware,Low,4,37,34
+DoS,Low,1,18,63
+Malware,High,4,44,8
+Ransomware,High,4,41,55
+Phishing,Low,5,21,42
+SQL Injection,Medium,5,2,20
+Phishing,Low,1,14,53
+SQL Injection,Medium,9,56,52
+DoS,Low,6,53,29
+Ransomware,Low,4,38,45
+Phishing,Low,7,29,6
+Ransomware,Medium,3,15,3
+DoS,High,9,19,59
+Phishing,Medium,6,14,24
+Malware,Low,4,16,4
+Ransomware,High,4,30,12
+Malware,Medium,9,42,93
+Malware,High,4,41,5
+Phishing,Low,9,45,58
+Phishing,Low,7,27,18
+Phishing,High,1,50,23
+Malware,High,6,8,5
+SQL Injection,High,7,34,34
+SQL Injection,Low,7,49,57
+DoS,High,2,38,53
+SQL Injection,Medium,3,31,52
+Malware,Low,2,58,81
+Malware,High,1,2,68
+Phishing,Low,8,10,63
+Phishing,Low,6,36,85
+Phishing,High,7,3,94
+SQL Injection,High,6,48,86
+SQL Injection,Low,4,30,85
+Phishing,Low,7,48,53
+SQL Injection,Low,6,21,13
+Phishing,Medium,7,10,84
+Malware,Low,9,8,64
+SQL Injection,Medium,7,46,40
+Ransomware,Low,8,18,69
+Ransomware,Low,7,23,86
+SQL Injection,Low,1,9,30
+Ransomware,Low,5,52,28
+DoS,High,2,59,32
+Ransomware,Medium,2,59,25
+Malware,Low,8,12,23
+Malware,Medium,4,31,32
+SQL Injection,Medium,1,3,60
+Malware,Low,4,8,23
+Malware,Low,2,9,65
+DoS,Low,9,12,84
+Ransomware,Low,8,38,51
+SQL Injection,High,9,44,1
+DoS,High,8,32,89
+Ransomware,Low,6,34,28
+SQL Injection,Low,9,36,6
+Ransomware,High,3,31,48
+Ransomware,Medium,4,31,98
+Phishing,High,9,6,61
+Phishing,Low,2,13,72
+Ransomware,High,4,9,34
+Malware,Medium,1,5,43
+Malware,Medium,7,27,87
+Malware,High,3,33,34
+SQL Injection,Medium,2,58,50
+DoS,High,8,1,97
+Phishing,Medium,4,44,53
+SQL Injection,Medium,2,55,50
+Phishing,Low,2,44,34
+SQL Injection,High,1,28,16
+Phishing,Medium,2,12,48
+Ransomware,Medium,4,21,39
+SQL Injection,High,7,19,92
+Malware,Low,4,51,58
+SQL Injection,High,4,38,8
+DoS,High,4,1,59
+Malware,Medium,8,53,96
+SQL Injection,High,7,19,95
+SQL Injection,High,4,55,66
+Malware,High,7,29,45
+Malware,High,5,33,83
+DoS,Low,1,5,27
+DoS,Low,4,38,59
+Ransomware,Medium,3,43,28
+DoS,High,3,17,95
+SQL Injection,Low,5,22,69
+DoS,Medium,1,3,79
+SQL Injection,Medium,7,42,41
+DoS,Low,8,31,94
+SQL Injection,Low,9,37,83
+Malware,High,3,7,29
+Ransomware,High,6,3,89
+Malware,Low,8,12,21
+SQL Injection,High,6,46,93
+Ransomware,Low,2,9,39
+Ransomware,Low,6,48,2
+Ransomware,High,2,1,45
+Malware,High,7,27,57
+DoS,Medium,7,58,35
+Phishing,High,8,19,45
+Ransomware,Medium,2,32,77
+DoS,Medium,9,17,37
+SQL Injection,Low,8,42,34
+DoS,Medium,3,30,33
+Phishing,Medium,8,35,12
+Malware,Medium,4,13,93
+DoS,Low,7,49,8
+Phishing,High,7,10,77
+Malware,Low,5,54,71
+SQL Injection,Medium,1,7,29
+Ransomware,High,4,54,60
+Ransomware,Medium,7,48,42
+Malware,Medium,6,42,28
+Phishing,Medium,4,6,53
+Ransomware,Low,9,11,33
+DoS,High,3,21,21
+Phishing,Medium,2,32,30
+Malware,High,2,37,90
+Malware,Medium,1,46,62
+Ransomware,High,7,52,40
+Ransomware,High,3,50,41
+SQL Injection,Low,9,52,39
+SQL Injection,Low,4,49,25
+DoS,High,7,48,9
+DoS,High,3,43,16
+Malware,High,7,40,70
+Malware,High,9,46,22
+DoS,Medium,7,54,90
+SQL Injection,High,3,59,96
+Phishing,Medium,2,10,5
+Malware,High,7,51,7
+SQL Injection,High,6,58,64
+Phishing,Low,6,46,87
+Phishing,Medium,1,3,83
+Phishing,Medium,9,34,13
+Malware,High,2,44,82
+Malware,High,3,22,92
+Ransomware,Medium,7,4,11
+Malware,Medium,8,55,56
+DoS,Low,6,30,19
+Ransomware,High,2,29,82
+Malware,High,9,41,62
+Malware,High,1,42,67
+SQL Injection,High,4,40,98
+Ransomware,Low,1,19,54
+Ransomware,Low,5,24,49
+Ransomware,Medium,7,27,40
+Phishing,Low,3,29,8
+SQL Injection,High,8,27,67
+SQL Injection,Medium,4,26,3
+DoS,Medium,2,23,51
+Ransomware,Medium,4,22,77
+DoS,High,2,32,52
+Ransomware,Medium,7,22,63
+Ransomware,Medium,7,15,30
+Malware,High,9,51,54
+Phishing,High,4,17,49
+Phishing,Medium,9,41,88
+SQL Injection,Medium,5,28,26
+DoS,Low,5,27,40
+DoS,Medium,9,21,67
+DoS,Medium,3,32,19
+Ransomware,High,8,16,78
+Phishing,High,5,29,78
+Malware,Medium,3,51,72
+SQL Injection,Medium,8,14,37
+Phishing,Medium,6,50,13
+Malware,Medium,5,59,21
+Phishing,High,9,14,16
+Malware,Medium,6,24,15
+Malware,Medium,1,44,21
+Ransomware,High,7,48,82
+DoS,High,6,19,86
+Malware,High,6,44,31
+DoS,Medium,2,22,86
+Phishing,Medium,7,42,65
+Malware,Low,1,11,36
+Malware,High,3,9,34
+Phishing,Low,3,22,45
+Phishing,High,7,24,97
+Malware,Medium,7,36,77
+SQL Injection,Medium,9,44,24
+Ransomware,High,7,54,94
+Ransomware,Low,2,33,73
+Malware,High,8,29,30
+Ransomware,Medium,3,58,62
+Phishing,High,9,14,73
+DoS,High,4,36,75
+Ransomware,High,8,9,57
+DoS,Medium,3,16,97
+Ransomware,Low,1,30,89
+SQL Injection,Medium,1,23,71
+Phishing,Low,8,31,30
+DoS,Medium,9,3,76
+Malware,High,2,32,41
+Ransomware,High,3,39,6
+Malware,Low,9,32,59
+DoS,Medium,4,9,90
+Phishing,High,9,2,85
+DoS,High,6,58,7
+Phishing,Medium,9,32,46
+Malware,Medium,2,5,57
+Phishing,High,9,59,18
+Ransomware,High,9,10,29
+SQL Injection,High,4,32,5
+Ransomware,Medium,6,51,93
+Phishing,Low,3,14,57
+Phishing,Low,1,27,53
+DoS,Medium,3,55,66
+DoS,Low,1,47,87
+SQL Injection,Medium,1,17,44
+DoS,Low,4,25,96
+Ransomware,Medium,4,12,21
+SQL Injection,High,5,24,37
+DoS,Low,1,56,86
+Ransomware,Medium,5,41,91
+SQL Injection,High,5,59,47
+Phishing,Medium,7,55,78
+Ransomware,High,2,5,17
+SQL Injection,High,2,20,55
+SQL Injection,High,7,38,48
+Malware,Low,6,39,68
+DoS,Medium,7,17,82
+SQL Injection,Low,5,26,29
+Phishing,Low,4,50,28
+Phishing,Medium,2,6,5
+Malware,High,1,21,16
+SQL Injection,Low,2,58,13
+SQL Injection,High,6,50,22
+Malware,Low,6,5,72
+Phishing,Low,2,45,81
+Malware,High,8,52,47
+Phishing,Medium,4,40,10
+Ransomware,Low,4,20,27
+Ransomware,Medium,2,8,58
+Malware,Medium,2,59,23
+Ransomware,Medium,4,31,20
+Phishing,High,2,15,95
+Ransomware,High,1,12,25
+Ransomware,High,3,20,58
+Phishing,High,7,34,79
+DoS,Medium,1,4,99
+Ransomware,High,6,5,48
+DoS,High,8,5,22
+SQL Injection,Medium,4,26,71
+Ransomware,High,8,30,26
+SQL Injection,Medium,6,10,66
+Malware,Medium,8,31,63
+SQL Injection,Medium,6,54,41
+Phishing,High,8,20,16
+Ransomware,High,7,55,76
+Phishing,Medium,6,11,93
+Phishing,Low,3,40,56
+SQL Injection,Medium,7,21,34
+Phishing,High,2,56,51
+Ransomware,Medium,4,8,4
+Ransomware,High,3,46,81
+DoS,Low,3,1,33
+DoS,Low,5,48,86
+Malware,Low,7,2,38
+SQL Injection,Medium,4,44,97
+Phishing,High,7,34,4
+Malware,High,9,40,27
+Phishing,High,5,23,26
+Malware,Medium,3,14,79
+SQL Injection,High,2,22,40
+SQL Injection,Medium,1,47,68
+SQL Injection,Medium,6,41,30
+Phishing,High,2,48,51
+SQL Injection,Low,8,6,96
+Phishing,Low,7,25,42
+Phishing,Medium,9,31,9
+Phishing,Medium,8,40,83
+Phishing,Medium,7,19,16
+Phishing,Low,2,21,74
+SQL Injection,High,5,5,7
+DoS,High,4,21,8
+DoS,Low,6,52,34
+SQL Injection,Medium,8,28,28
+Malware,Medium,5,4,19
+Malware,Low,1,19,64
+DoS,High,2,38,84
+Malware,Medium,3,29,27
+Phishing,High,5,41,92
+Malware,High,8,41,65
+Phishing,Low,4,55,29
+Malware,Low,7,13,3
+Ransomware,High,9,18,46
+DoS,High,4,30,89
+Ransomware,Low,9,40,11
+Ransomware,High,2,29,77
+DoS,High,7,17,61
+DoS,Low,6,8,83
+Malware,Low,4,55,68
+Ransomware,Low,3,15,57
+Ransomware,High,4,48,62
+Phishing,Low,8,10,91
+Phishing,Medium,1,14,50
+Malware,High,1,12,60
+Phishing,Low,6,22,21
+Ransomware,Low,2,28,86
+Ransomware,High,6,35,85
+Malware,High,2,31,12
+SQL Injection,Medium,1,58,27
+SQL Injection,Medium,4,1,62
+DoS,High,3,47,86
+Ransomware,High,3,35,47
+SQL Injection,Low,6,33,60
+Phishing,Medium,5,17,41
+Phishing,Low,6,52,59
+DoS,Low,8,49,48
+SQL Injection,Medium,8,1,1
+Ransomware,High,2,26,49
+SQL Injection,High,1,27,45
+DoS,Medium,3,30,97
+Ransomware,Low,7,53,1
+SQL Injection,Low,9,54,30
+SQL Injection,Medium,3,25,10
+Malware,Medium,3,35,15
+Ransomware,Medium,2,19,51
+Phishing,High,7,59,73
+Malware,Medium,3,45,65
+Phishing,Medium,4,30,22
+Phishing,Medium,1,27,91
+SQL Injection,Low,9,7,89
+SQL Injection,Low,5,43,39
+Ransomware,High,8,52,58
+SQL Injection,Low,4,15,62
+Ransomware,Low,2,37,61
+Phishing,Medium,1,24,62
+Ransomware,Low,3,55,32
+Ransomware,High,5,39,54
+Malware,Medium,5,49,56
+Ransomware,Low,4,24,57
+DoS,High,5,44,9
+Phishing,Medium,9,45,45
+Phishing,High,5,5,74
+Ransomware,Medium,2,49,83
+SQL Injection,High,1,20,30
+Phishing,High,4,11,24
+Malware,High,9,28,21
+SQL Injection,Medium,9,17,42
+Ransomware,Medium,5,43,51
+SQL Injection,High,6,35,9
+DoS,High,1,49,72
+DoS,Medium,4,52,14
+DoS,Low,8,20,87
+Phishing,Low,3,3,11
+SQL Injection,High,9,36,37
+Ransomware,High,6,37,28
+Phishing,Low,6,17,71
+Phishing,High,7,14,49
+Malware,High,6,14,93
+Phishing,Medium,8,11,93
+SQL Injection,High,5,18,50
+Malware,Medium,5,11,65
+Malware,High,4,6,1
+SQL Injection,Low,8,20,44
+Malware,Medium,6,21,41
+Malware,High,4,43,95
+SQL Injection,Medium,2,9,14
+DoS,Medium,3,32,33
+DoS,Low,2,40,28
+Malware,Low,4,44,71
+Phishing,High,4,56,38
+Ransomware,Medium,6,8,84
+Ransomware,High,6,23,10
+Phishing,High,8,18,41
+Malware,High,4,27,93
+SQL Injection,Medium,5,33,38
+Phishing,High,9,43,79
+Phishing,Medium,8,3,23
+DoS,Low,6,34,29
+Ransomware,Medium,2,50,79
+SQL Injection,Low,2,3,38
+Malware,Low,5,44,70
+SQL Injection,Medium,1,29,65
+DoS,Low,8,55,22
+Malware,Low,9,2,20
+Malware,Medium,5,13,3
+SQL Injection,Medium,3,48,86
+SQL Injection,Medium,1,45,92
+Phishing,Medium,8,2,21
+Phishing,Low,3,31,54
+Ransomware,High,5,41,4
+DoS,Low,3,53,83
+Malware,Low,7,31,80
+Malware,High,9,21,31
+Phishing,Low,5,59,13
+Phishing,Medium,3,46,61
+DoS,Low,2,9,94
+SQL Injection,High,3,27,16
+Ransomware,High,4,55,25
+Phishing,Low,4,38,47
+Phishing,High,6,32,80
+Phishing,Medium,1,46,90
+SQL Injection,Medium,3,3,26
+SQL Injection,Low,9,39,84
+Ransomware,High,3,16,18
+SQL Injection,Low,2,15,93
+SQL Injection,Medium,6,21,39
+SQL Injection,High,1,18,9
+SQL Injection,Medium,2,49,36
+Phishing,High,5,54,82
+DoS,Low,9,32,69
+DoS,Low,3,23,47
+Malware,Medium,2,18,54
+Phishing,Low,8,58,95
+DoS,Medium,9,2,47
+DoS,Low,8,18,95
+DoS,Low,5,50,17
+Ransomware,Medium,6,54,90
+Ransomware,Low,8,3,5
+DoS,Low,5,51,25
+Malware,Medium,8,8,89
+Malware,Low,8,27,51
+DoS,Medium,7,34,35
+SQL Injection,High,8,6,42
+Phishing,Low,6,56,85
+SQL Injection,High,3,11,63
+Phishing,Low,3,28,81
+Malware,Medium,1,23,50
+Phishing,Low,3,27,96
+Malware,Medium,9,54,38
+SQL Injection,Low,5,34,64
+SQL Injection,Low,3,45,22
+Phishing,Medium,6,31,74
+SQL Injection,High,9,56,83
+DoS,Medium,9,13,10
+Malware,Medium,1,41,47
+Ransomware,High,8,46,64
+Ransomware,Low,9,40,34
+DoS,Low,8,33,35
+DoS,High,3,20,17
+Malware,High,6,54,68
+Malware,High,1,11,36
+DoS,High,1,3,91
+Phishing,Low,1,34,6
+DoS,High,4,54,26
+SQL Injection,Low,8,26,31
+DoS,Medium,4,3,85
+DoS,Medium,3,31,41
+Ransomware,High,6,35,99
+DoS,Low,9,34,87
+Phishing,Low,3,37,80
+Phishing,Low,1,37,22
+Ransomware,Low,6,21,80
+Ransomware,Medium,7,56,29
+DoS,High,1,50,54
+Ransomware,Low,8,36,75
+Ransomware,High,4,38,71
+Ransomware,Medium,3,26,20
+Ransomware,High,2,49,47
+DoS,Low,8,58,47
+Malware,Low,5,51,23
+DoS,Low,7,41,59
+Ransomware,High,7,33,64
+SQL Injection,High,9,25,64
+DoS,High,3,33,45
+DoS,Medium,6,25,68
+Phishing,Medium,8,49,65
+Ransomware,Medium,6,11,47
+DoS,High,5,59,36
+SQL Injection,Low,5,50,77
+Ransomware,Low,1,25,22
+Malware,Medium,9,13,69
+DoS,Low,7,50,16
+DoS,Medium,5,42,88
+Ransomware,Medium,5,57,61
+Ransomware,Medium,7,55,63
+SQL Injection,Low,3,49,14
+Malware,Medium,8,41,58
+Malware,Low,4,3,88
+Malware,Low,8,48,61
+SQL Injection,Low,5,15,42
+DoS,Medium,6,28,36
+Ransomware,Medium,2,38,28
+Ransomware,Low,7,3,68
+SQL Injection,Medium,9,30,72
+DoS,High,2,19,1
+DoS,High,9,4,23
+DoS,High,9,30,65
+SQL Injection,Low,8,36,82
+Ransomware,Medium,6,17,3
+Phishing,Low,8,58,1
+Ransomware,Medium,1,13,48
+Malware,Medium,8,3,42
+Phishing,Medium,7,54,88
+DoS,High,4,42,97
+SQL Injection,Low,4,14,8
+Ransomware,Low,2,57,63
+Malware,Low,6,45,32
+Ransomware,Medium,2,33,72
+SQL Injection,High,8,36,49
+SQL Injection,High,6,18,69
+Ransomware,Low,6,3,93
+Phishing,High,1,31,67
+Phishing,High,9,54,86
+Ransomware,Medium,2,49,23
+Malware,High,6,11,49
+Phishing,Medium,8,56,85
+Ransomware,High,2,55,61
+Malware,High,1,23,14
+Ransomware,High,9,30,76
+Phishing,Medium,3,59,75
+Malware,Medium,2,36,33
+Phishing,High,5,16,34
+Phishing,Medium,4,29,68
+Malware,Low,7,51,51
+Malware,Medium,1,55,32
+Ransomware,Low,7,53,89
+Ransomware,Medium,2,25,8
+Phishing,Low,1,43,93
+Malware,High,4,38,83
+Phishing,High,7,52,77
+Ransomware,Low,6,58,77
+Phishing,Low,8,26,42
+DoS,Low,5,11,9
+Ransomware,Low,8,22,7
+Malware,High,9,49,55
+Phishing,High,4,28,99
+Phishing,Low,5,8,4
+DoS,Low,8,18,89
+SQL Injection,High,3,12,85
+Phishing,High,7,40,62
+SQL Injection,High,5,16,15
+Malware,Medium,8,50,58
+Phishing,Low,1,23,51
+Malware,Low,5,39,52
+Ransomware,High,1,44,70
+Phishing,Low,6,51,1
+Ransomware,High,7,21,7
+Phishing,Low,6,16,72
+Malware,Low,7,26,19
+Ransomware,Medium,2,37,25
+SQL Injection,Low,8,18,70
+Ransomware,High,9,4,97
+Phishing,Medium,1,25,46
+SQL Injection,High,9,43,46
+Ransomware,Low,7,3,97
+Ransomware,High,5,57,37
+DoS,Medium,4,36,18
+Malware,High,3,2,44
+Phishing,Medium,1,18,92
+DoS,High,1,59,5
+Malware,Medium,8,45,18
+SQL Injection,Medium,9,42,90
+DoS,High,8,16,5
+Malware,High,8,44,67
+Ransomware,High,6,19,72
+DoS,Medium,2,9,4
+DoS,Medium,3,23,71
+SQL Injection,High,8,44,22
+Phishing,Low,2,57,8
+DoS,High,9,50,18
+Phishing,Medium,2,43,74
+Phishing,High,8,58,47
+Phishing,High,8,47,6
+Phishing,Medium,1,56,30
+Ransomware,Medium,3,27,11
+Ransomware,Medium,3,12,41
+SQL Injection,Medium,1,46,87
+SQL Injection,High,9,32,49
+Ransomware,Low,1,15,98
+DoS,Low,6,57,94
+SQL Injection,High,9,44,26
+DoS,Medium,1,40,44
+SQL Injection,High,7,28,26
+Malware,High,4,24,75
+DoS,High,6,30,99
+Phishing,High,2,22,88
+SQL Injection,Low,2,44,81
+Malware,Low,4,45,86
+SQL Injection,Low,3,49,12
+SQL Injection,Low,6,47,5
+Phishing,Low,7,8,88
+DoS,Medium,1,19,49
+DoS,High,2,21,84
+SQL Injection,Low,5,50,2
+DoS,Low,9,41,88
+Ransomware,Medium,8,6,2
+Phishing,High,5,13,18
+Phishing,Low,9,5,60
+Phishing,Medium,2,19,27
+Malware,Low,6,24,58
+Malware,Low,4,24,44
+DoS,Low,3,20,27
+Malware,Low,2,8,84
+Phishing,Low,3,16,34
+SQL Injection,Low,3,47,4
+DoS,Low,4,43,70
+Ransomware,High,2,12,93
+Phishing,High,9,7,2
+Malware,Low,8,41,91
+DoS,High,8,25,45
+Ransomware,Medium,2,22,31
+Malware,Low,2,6,44
+Phishing,Medium,6,13,6
+Malware,Low,1,1,94
+Phishing,High,5,26,13
+Malware,High,8,13,50
+SQL Injection,High,6,30,97
+SQL Injection,Medium,3,13,5
+Phishing,High,3,34,76
+DoS,Medium,1,30,79
+Malware,Low,3,19,11
+Ransomware,Medium,5,56,97
+SQL Injection,High,9,24,45
+Phishing,Medium,1,43,45
+Phishing,High,3,43,8
+Ransomware,High,3,48,71
+SQL Injection,High,9,50,86
+Ransomware,Medium,4,12,86
