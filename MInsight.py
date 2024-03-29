@@ -7,8 +7,10 @@ import pandas as pd
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-np', '--num_repeats', type=int, default=5, help='Number of repeats for model training')
-args = parser.parse_args()
+parser.add_argument('-np', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
+parser.add_argument('-f', '--filepath', type=str, help='Path to the CSV file')
+args = parser.parse_args() # นำ argument ที่รับเข้ามาเก็บไว้ในตัวแปร args 
+
 
 ascii_art = r'''
 
@@ -95,7 +97,7 @@ if __name__ == '__main__': # ตรวจสอบว่าโปรแกรม
 
     numeric_columns = ['Frequency', 'Duration', 'Targets'] # กำหนดคอลัมน์ที่เป็นตัวเลขใน numeric_columns ในที่นี้คือ ['Frequency', 'Duration', 'Targets'] 
     categorical_features = ['Severity'] # กำหนดคอลัมน์ที่เป็นข้อความใน categorical_features ในที่นี้คือ ['Severity']
-    filepath = '/Users/miracle/CPE/cpe_270/MInsight/cyberattacks.csv' # กำหนดที่อยู่ของไฟล์ CSV ใน filepath
+    filepath = args.filepath # กำหนด path ของไฟล์ CSV ใน filepath โดยใช้ args.filepath
     target_column = 'Attack_Type' # กำหนดคอลัมน์ที่เป็น target ใน target_column ในที่นี้คือ 'Attack_Type' 
 
     features, labels = load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column) # โหลดข้อมูลและทำการประมวลผลข้อมูลโดยใช้ฟังก์ชัน load_and_preprocess_data และเก็บไว้ใน features, labels
