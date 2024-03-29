@@ -25,8 +25,8 @@
 
 #### 3.) กำหนดจำนวนรอบที่ต้องการ Train Model ผ่าน args (parser) ใน Terminal โดยที่จำนวนรอบเริ่มต้นคือ 5
 
-        python3 MInsight.py -fp xxx/folder/xxxx.csv -np [จำนวนรอบที่ต้องการ]
-        python3 MInsight.py -fp xxx/folder/xxxx.csv -np 10
+        python3 MInsight.py -fp xxx/folder/xxxx.csv -nr [จำนวนรอบที่ต้องการ]
+        python3 MInsight.py -fp xxx/folder/xxxx.csv -nr 10
         python3 MInsight.py --filepath xxx/folder/xxxx.csv --num_repeats 10
 
-        หรือใ่ช้ python MInsight.py -fp xxx/folder/xxxx.csv -np [จำนวนรอบที่ต้องการ]
+        หรือใ่ช้ python MInsight.py -fp xxx/folder/xxxx.csv -nr [จำนวนรอบที่ต้องการ]

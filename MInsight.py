@@ -11,7 +11,7 @@ import pandas as pd
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-np', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
+parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
 parser.add_argument('-fp', '--filepath', type=str, help='Path to the CSV file')
 args = parser.parse_args() # นำ argument ที่รับเข้ามาเก็บไว้ในตัวแปร args 
 
@@ -86,16 +86,16 @@ def train_and_evaluate_model(features, labels, patience=10, num_repeats=args.num
  
         # Print the overall progress for each iteration
         percent_complete = ((repeat + 1) / num_repeats) * 100 # คำนวณเปอร์เซ็นต์ของการทำงานทั้งหมดในแต่ละรอบ 
-        print(f'Iteration {repeat + 1} Completed: {percent_complete:.2f}% Done. Mean accuracy: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
+        print(f'รอบที่ {repeat + 1} สำเร็จแล้ว: {percent_complete:.2f}% Done. ความแม่นยำเฉลี่ยอยู่ที่: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
 
-    print(f'Best accuracy: {best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
-    return best_model # ส่งค่า best_model กลับ
+    print(f'ความแม่นยำที่ดีที่สุดอยู่ที่: {best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
+    return best_model, best_accuracy # ส่งค่า best_model และ best_accuracy กลับ
 
 
-def predict_next_attack(model, new_data, labels): # สร้างฟังก์ชัน predict_next_attack ที่รับพารามิเตอร์ 3 ตัวคือ model, new_data, labels
+def predict_next_attack(model, new_data, labels, best_accurary): # สร้างฟังก์ชัน predict_next_attack ที่รับพารามิเตอร์ 3 ตัวคือ model, new_data, labels
     prediction = model.predict(new_data.reshape(1, -1)) # ทำนายคลาสของ new_data โดยใช้ model.predict() และเก็บไว้ในตัวแปร prediction
     predicted_attack = labels.columns[np.argmax(prediction)] # หาชื่อคลาสที่ทำนายได้จาก prediction และเก็บไว้ในตัวแปร predicted_attack
-    print(f"Predicted attack type for the next data point using the best model: {predicted_attack}") # แสดงข้อความที่บอกคลาสที่ทำนายได้
+    print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} ถึง {best_accurary:.2f}%") # แสดงข้อความที่บอกคลาสที่ทำนายได้
 
 if __name__ == '__main__': # ตรวจสอบว่าโปรแกรมถูกเรียกใช้โดยตรงหรือไม่
 
@@ -105,7 +105,7 @@ if __name__ == '__main__': # ตรวจสอบว่าโปรแกรม
     target_column = 'Attack_Type' # กำหนดคอลัมน์ที่เป็น target ใน target_column ในที่นี้คือ 'Attack_Type' 
 
     features, labels = load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column) # โหลดข้อมูลและทำการประมวลผลข้อมูลโดยใช้ฟังก์ชัน load_and_preprocess_data และเก็บไว้ใน features, labels
-    best_model = train_and_evaluate_model(features, labels, patience=10) # ฝึกและประเมินโมเดลโดยใช้ฟังก์ชัน train_and_evaluate_model และเก็บโมเดลที่ดีที่สุดไว้ใน best_model 
+    best_model, best_accurary = train_and_evaluate_model(features, labels, patience=10) # ฝึกและประเมินโมเดลโดยใช้ฟังก์ชัน train_and_evaluate_model และเก็บโมเดลที่ดีที่สุดไว้ใน best_model 
     new_data = features[0] # กำหนดข้อมูลใหม่ที่จะทำนายใน new_data โดยใช้ข้อมูลใน features ที่ index เท่ากับ 0
-    predict_next_attack(best_model, new_data, labels) # ทำนายคลาสของข้อมูลใหม่โดยใช้ฟังก์ชัน predict_next_attack
+    predict_next_attack(best_model, new_data, labels, best_accurary) # ทำนายคลาสของข้อมูลใหม่โดยใช้ฟังก์ชัน predict_next_attack
     
