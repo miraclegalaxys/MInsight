@@ -1,3 +1,7 @@
+#MInsight
+#Project: CPE 270 AI
+#Machine Learning Model for Predicting Next Cyber Attack Type
+
 import numpy as np 
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import StandardScaler
