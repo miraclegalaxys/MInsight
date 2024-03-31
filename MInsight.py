@@ -10,10 +10,14 @@ from imblearn.over_sampling import SMOTE
 import pandas as pd
 import argparse
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+import requests
+
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
-parser.add_argument('-fp', '--filepath', type=str, help='Path to the CSV file')
+parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='จำนวนครั้งที่ต้องการ Train Model') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
+parser.add_argument('-fp', '--filepath', type=str, help='ที่อยู่ของไฟล์ CSV') # สร้าง argument ชื่อ filepath และเก็บค่าที่รับเข้ามาในตัวแปร args.filepath
 args = parser.parse_args() # นำ argument ที่รับเข้ามาเก็บไว้ในตัวแปร args 
 
 
@@ -93,55 +97,139 @@ def train_and_evaluate_model(features, labels, patience=10, num_repeats=args.num
     return best_model, best_accuracy # ส่งค่า best_model และ best_accuracy กลับ
 
 
-def predict_next_attack(model, new_data, labels, best_accuracy, additional_columns): # สร้างฟังก์ชัน predict_next_attack ที่รับพารามิเตอร์ 3 ตัวคือ model, new_data, labels
-    prediction = model.predict(new_data.reshape(1, -1)) # ทำนายคลาสของ new_data โดยใช้ model.predict() และเก็บไว้ในตัวแปร prediction
-    predicted_attack = labels.columns[np.argmax(prediction)] # หาชื่อคลาสที่ทำนายได้จาก prediction และเก็บไว้ในตัวแปร predicted_attack
-    print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} สูงถึง {best_accuracy:.2f}%")
-    
-    data_dict = {col: [val] for col, val in zip(additional_columns, new_data)}
-    
-    # Add the predicted attack type and accuracy to the dictionary
-    data_dict['Predicted_Attack_Type'] = [predicted_attack]
-    data_dict['Accuracy'] = [best_accuracy]
-    
-    return pd.DataFrame(data_dict)
+def predict_next_attacks(model, data_points, labels, best_accuracy, additional_columns):
+    predictions = []
+    for new_data in data_points:
+        prediction = model.predict(new_data.reshape(1, -1))
+        predicted_attack = labels.columns[np.argmax(prediction)]
+        print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} สูงถึง {best_accuracy:.2f}%")
+        data_dict = {col: val for col, val in zip(additional_columns, new_data)}
+        data_dict['Predicted_Attack_Type'] = predicted_attack
+        data_dict['Accuracy'] = best_accuracy
+        predictions.append(data_dict)
+    return pd.DataFrame(predictions)
+
 
 def save_predict(prediction_df):
-    save_pre = input("\nคุณต้องการบันทึกค่าการทำนายการโจมตีครั้งล่าสุดหรือไม่? (y/n): ")
-    if save_pre == 'y':
-        # Check if the file exists and append the new prediction, otherwise create a new file
-        filepath = 'Prediction.csv'
-        if os.path.exists(filepath):
-            prediction_df.to_csv(filepath, mode='a', index=False, header=False)
-            print(f"\nค่าการทำนายการโจมตีครั้งล่าสุดถูกเพิ่มลงในไฟล์ {filepath} แล้ว")
+    while True:  # Start an infinite loop
+        save_pre = input("คุณต้องการบันทึกการคาดการณ์การโจมตีครั้งล่าสุดหรือไม่? (y/n): ")
+        if save_pre == 'y':
+            # Check if the file exists and append the new prediction, otherwise create a new file
+            filepath = 'Prediction.csv'
+            if os.path.exists(filepath):
+                prediction_df.to_csv(filepath, mode='a', index=False, header=False)
+                print(f"\nการคาดการณ์การโจมตีครั้งล่าสุดถูกเพิ่มลงในไฟล์ {filepath} แล้ว")
+            else:
+                prediction_df.to_csv(filepath, index=False)
+                print(f"\nการคาดการณ์การโจมตีครั้งล่าสุดถูกบันทึกลงในไฟล์ {filepath} แล้ว")
+            break  # Exit the loop
+        elif save_pre == 'n':
+            break  # Exit the loop
         else:
-            prediction_df.to_csv(filepath, index=False)
-            print(f"\nค่าการทำนายการโจมตีครั้งล่าสุดถูกบันทึกลงในไฟล์ {filepath} แล้ว")
-    elif save_pre == 'n':
-        print("\nค่าการทำนายการโจมตีครั้งล่าสุดไม่ได้ถูกบันทึก")
+            print("คุณได้ป้อนค่าที่ไม่ถูกต้อง โปรดลองอีกครั้ง")
+
+    
+        
+def plot_graph(accuracy_df, predicted_attack):
+    while True:  # Start an infinite loop
+        plot_gra = input("\nคุณต้องการพล็อตกราฟหรือไม่? (y/n):")
+        if plot_gra == 'y':
+            plt.figure(figsize=(10, 6))
+        # Use a different color for new attack types
+            palette = ["red" if attack_type == predicted_attack else "blue" for attack_type in accuracy_df['Predicted']]
+            sns.barplot(data=accuracy_df, x='Predicted', y='Accuracy', hue='Predicted', palette=palette, dodge=False)
+            plt.xlabel('Attack Type')
+            plt.ylabel('Accuracy (%)')
+            plt.xticks(rotation=0)
+            plt.title('Prediction Accuracy for Each Attack Type')
+            plt.legend(title='Predicted', loc='upper right', labels=['Predicted'])
+            plt.tight_layout()
+            plt.show()
+            break  # Exit the loop
+        elif plot_gra == 'n':
+            break  # Exit the loop
+        else:
+            print("คุณได้ป้อนค่าที่ไม่ถูกต้อง โปรดลองอีกครั้ง")
+            
+        
+        
+def aggregate_predictions(model, features, labels):
+    predictions = model.predict(features)
+    predicted_labels = np.argmax(predictions, axis=1)
+    true_labels = np.argmax(labels.values, axis=1)
+
+    # Map predicted labels back to the original attack type names
+    attack_types = labels.columns
+    predicted_attack_types = attack_types[predicted_labels]
+
+    # Create a DataFrame with true and predicted labels
+    results_df = pd.DataFrame({'True': true_labels, 'Predicted': predicted_attack_types})
+    
+    # Map numerical labels back to categorical labels
+    results_df.replace({'True': dict(enumerate(attack_types)),
+                        'Predicted': dict(enumerate(attack_types))}, inplace=True)
+    
+    # Calculate accuracy for each attack type
+    accuracy_per_attack_type = results_df[results_df['True'] == results_df['Predicted']]\
+                               .groupby('Predicted').size()\
+                               .div(results_df.groupby('Predicted').size()) * 100
+    
+    # Create a DataFrame with the calculated accuracy
+    accuracy_df = accuracy_per_attack_type.reset_index(name='Accuracy')
+    
+    # Add a column to indicate whether the attack type is new
+    
+    return accuracy_df
+
+
+def download_file_from_url(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        file_name = url.split('/')[-1]
+        save_pre = input(f"คุณต้องการดาวน์โหลดไฟล์คู่มือการป้องกันหรือไม่ (y/n): ")
+        if save_pre.lower() == 'y':
+            with open(file_name, 'wb') as file:
+                file.write(response.content)
+            print(f"ไฟล์คู่มือการป้องกันถูกดาวน์โหลดเรียบร้อยแล้ว successfully.")
+        else:
+            pass
     else:
-        print("\nคุณได้ป้อนค่าที่ไม่ถูกต้อง โปรดลองอีกครั้ง")
+        print(f"ไม่สามารถดาวน์โหลดไฟล์คู่มือการป้องกันได้ โปรดลองอีกครั้ง {response.status_code}")
+url = 'https://drive.google.com/uc?export=download&id=1eTONmuRUcguA-YkWplfK3nQT5uCNG0JI'
 
 
 
-if __name__ == '__main__': # ตรวจสอบว่าโปรแกรมถูกเรียกใช้โดยตรงหรือไม่
-    input("Press Enter To Start:\n") # รับข้อมูลจากผู้ใช้เพื่อเริ่มการทำงาน
-    print("Starting the program...\n") # แสดงข้อความเมื่อผู้ใช้กด Enter เพื่อเริ่มการทำงาน
-    numeric_columns = ['Frequency', 'Duration', 'Targets'] # กำหนดคอลัมน์ที่เป็นตัวเลขใน numeric_columns ในที่นี้คือ ['Frequency', 'Duration', 'Targets'] 
-    categorical_features = ['Severity'] # กำหนดคอลัมน์ที่เป็นข้อความใน categorical_features ในที่นี้คือ ['Severity']
-    filepath = args.filepath # กำหนด path ของไฟล์ CSV ใน filepath โดยใช้ args.filepath
-    target_column = 'Attack_Type' # กำหนดคอลัมน์ที่เป็น target ใน target_column ในที่นี้คือ 'Attack_Type' 
 
-    features, labels = load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column) # โหลดข้อมูลและทำการประมวลผลข้อมูลโดยใช้ฟังก์ชัน load_and_preprocess_data และเก็บไว้ใน features, labels
-    best_model, best_accuracy = train_and_evaluate_model(features, labels, patience=10) # ฝึกและประเมินโมเดลโดยใช้ฟังก์ชัน train_and_evaluate_model และเก็บค่า best_model, best_accuracy
-    new_data = features[0] # กำหนดข้อมูลใหม่ที่จะทำนายใน new_data โดยใช้ข้อมูลใน features ที่ index เท่ากับ 0
-    
-    additional_columns = ['Severity', 'Frequency', 'Duration', 'Targets']  # Define additional columns
-    predicted_attack_df = predict_next_attack(best_model, new_data, labels, best_accuracy, additional_columns)
-    save_predict(predicted_attack_df)
-    
-    input("\nPress Enter To Exit:") # รับข้อมูลจากผู้ใช้เพื่อออกจากโปรแกรม
-    
+
+
+
+
+if __name__ == '__main__': # Check if the script is being run directly
+    input("Press Enter To Start:\n") # Prompt to start the program
+    print("Starting the program...\n") # Display message indicating the start of the program
+    numeric_columns = ['Frequency', 'Duration', 'Targets'] # Define numeric columns
+    categorical_features = ['Severity'] # Define categorical features
+    filepath = args.filepath # Get the filepath from the command-line arguments
+
+    if filepath is None:
+        print("โปรดระบุที่อยู่ของไฟล์ CSV โดยใช้ argument -fp หรือ --filepath\n")
+    else:
+        target_column = 'Attack_Type' # Define the target column
+        features, labels = load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column) # Load and preprocess the data
+        best_model, best_accuracy = train_and_evaluate_model(features, labels, patience=10) # Train and evaluate the model
+        new_data = features[0] # Define new data for prediction
+        all_features = features # Define all features for prediction
+        all_labels = labels # Define all labels for prediction
+        accuracy_df = aggregate_predictions(best_model, all_features, all_labels) # Aggregate predictions
+
+        additional_columns = ['Severity', 'Frequency', 'Duration', 'Targets']  # Define additional columns
+        predicted_attack_df = predict_next_attacks(best_model, [new_data], labels, best_accuracy, additional_columns)  # Update this line
+        plot_graph(accuracy_df, predicted_attack_df['Predicted_Attack_Type'].values[0]) # Plot the graph
+        save_predict(predicted_attack_df) # Save the prediction
+        download_file_from_url(url)
+
+    input("\nPress Enter To Exit:") # Prompt to exit the program
+
         
     
 
