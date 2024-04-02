@@ -14,6 +14,13 @@
         4. pip install scikit-learn
         5. pip install smote
         6. pip install tensorflow
+        7. pip install imbalanced-learn
+        8. pip install matplotlib
+        9. pip install seaborn
+        10. pip install requests
+
+        หรือ pip install numpy scikit-learn tensorflow imbalanced-learn pandas matplotlib seaborn requests smote
+
 
 #### 2.) นำเข้าไฟล์ CSV ผ่าน args (parser) ใน Terminal
 
