@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #MInsight
 #Project: CPE 270 AI
 #Machine Learning Model for Predicting Next Cyber Attack Type
@@ -12,6 +13,7 @@ import argparse
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+from flask import Flask, request, send_file, jsonify
 import requests
 
 
@@ -183,7 +185,7 @@ def aggregate_predictions(model, features, labels):
 
 
 def download_file_from_url(url):
-    response = requests.get(url)
+    response = requests.get(url, allow_redirects=True)
     if response.status_code == 200:
         file_name = url.split('/')[-1]
         save_pre = input(f"คุณต้องการดาวน์โหลดไฟล์คู่มือการป้องกันหรือไม่ (y/n): ")
@@ -195,10 +197,8 @@ def download_file_from_url(url):
             pass
     else:
         print(f"ไม่สามารถดาวน์โหลดไฟล์คู่มือการป้องกันได้ โปรดลองอีกครั้ง {response.status_code}")
-url = 'https://drive.google.com/uc?export=download&id=1eTONmuRUcguA-YkWplfK3nQT5uCNG0JI'
 
-
-
+url = 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf'
 
 
 
@@ -229,6 +229,7 @@ if __name__ == '__main__': # Check if the script is being run directly
         download_file_from_url(url)
 
     input("\nPress Enter To Exit:") # Prompt to exit the program
+
 
         
     
