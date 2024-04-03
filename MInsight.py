@@ -40,11 +40,11 @@ ascii_art = fr'''{Fore.CYAN}
                                               \______/                    
                                               
 '''
-print(ascii_art)  # Display the ASCII art
+print(ascii_art) 
 
 credit = 'Created by: '
 
-print(f'{credit}\n\n') # Display the credit/license information
+print(f'{credit}\n\n') 
 
 def load_and_preprocess_data(filepath, numeric_columns, categorical_features, target_column): # สร้างฟังก์ชัน load_and_preprocess_data ที่รับพารามิเตอร์ 4 ตัวคือ filepath, numeric_columns, categorical_features, target_column
     df = pd.read_csv(filepath) # อ่านไฟล์ CSV จาก filepath และเก็บไว้ในตัวแปร df
@@ -234,5 +234,78 @@ if __name__ == '__main__': # สร้างบล็อกเพื่อเร
 
 
         
-    
+    #MInsight Program 
+
+# Start
+#     |
+#     v
+# +---+------------------------------------+
+# | Load and Preprocess Data               |
+# | 1. Read CSV file                       |
+# | 2. Check for numeric columns           |
+# | 3. Fill missing values for numeric cols|
+# | 4. Identify categorical features       |
+# | 5. Encode categorical features         |
+# | 6. Scale features                      |
+# +---+------------------------------------+
+#     |
+#     v
+# +---+------------------------------------+
+# | Check for remaining missing values     |
+# +---+------------------------------------+
+#     | Yes                          No
+#     |                               |
+#     v                               v
+# +---+------------+          +-------+-------------------+
+# | Handle missing |          | Proceed with             |
+# | values         |          | preprocessed data        |
+# +---+------------+          +-------+-------------------+
+#     |                               |
+#     v                               v
+# +---+------------------------------------+
+# | Create Neural Network Model            |
+# | 1. Define input layer                  |
+# | 2. Add first dense layer with relu     |
+# | 3. Add dropout layer                   |
+# | 4. Add second dense layer with relu    |
+# | 5. Add dropout layer                   |
+# | 6. Define output layer with softmax    |
+# | 7. Compile model with adam optimizer   |
+# +---+------------------------------------+
+#     |
+#     v
+# +---+------------------------------------+
+# | Train and Evaluate Model               |
+# | For each repeat:                       |
+# |   For each fold in K-Fold:             |
+# |     1. Apply SMOTE                     |
+# |     2. Train model with early stopping |
+# |     3. Evaluate model on test data     |
+# |   Update best model if needed          |
+# +---+------------------------------------+
+#     |
+#     v
+# +---+------------------------------------+
+# | Check if better model found            |
+# +---+------------------------------------+
+#     | Yes                          No
+#     |                               |
+#     v                               v
+# +---+------------+          +-------+-------------------+
+# | Update best   |          | Keep current              |
+# | model         |          | best model                |
+# +---+------------+          +-------+-------------------+
+#     |                               |
+#     +------------+------------------+
+#                  |
+#                  v
+# +---+------------------------------------+
+# | Predict Next Attack                    |
+# | 1. Prepare new data point              |
+# | 2. Make prediction using best model    |
+# | 3. Print predicted attack type         |
+# +----------------------------------------+
+#     |
+#     v
+# End
 
