@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras import layers, models, callbacks 
+from colorama import Fore, Style
 from imblearn.over_sampling import SMOTE 
 import pandas as pd
 import argparse
@@ -14,15 +15,17 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
+import colorama
 
+colorama.init(autoreset=True)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='จำนวนครั้งที่ต้องการ Train Model') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
-parser.add_argument('-fp', '--filepath', type=str, help='ที่อยู่ของไฟล์ CSV') # สร้าง argument ชื่อ filepath และเก็บค่าที่รับเข้ามาในตัวแปร args.filepath
+parser.add_argument('-nr', '--num_repeats', type=int, default=5, help='Number of repeats for model training') # สร้าง argument ชื่อ num_repeats โดยกำหนดค่า default เป็น 5 และเก็บค่าที่รับเข้ามาในตัวแปร args.num_repeats 
+parser.add_argument('-fp', '--filepath', type=str, help='Location of CSV to need model training') # สร้าง argument ชื่อ filepath และเก็บค่าที่รับเข้ามาในตัวแปร args.filepath
 args = parser.parse_args() # นำ argument ที่รับเข้ามาเก็บไว้ในตัวแปร args 
 
 
-ascii_art = r'''
+ascii_art = fr'''{Fore.CYAN}
 
 /$$      /$$ /$$$$$$                     /$$           /$$         /$$    
 | $$$    /$$$|_  $$_/                    |__/          | $$        | $$    
@@ -94,7 +97,7 @@ def train_and_evaluate_model(features, labels, patience=10, num_repeats=args.num
         percent_complete = ((repeat + 1) / num_repeats) * 100 # คำนวณเปอร์เซ็นต์ของการทำงานทั้งหมดในแต่ละรอบ 
         print(f'รอบที่ {repeat + 1} สำเร็จแล้ว: {percent_complete:.2f}% Done. ความแม่นยำเฉลี่ยอยู่ที่: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
 
-    print(f'ความแม่นยำสูงสุดอยู่ที่: {best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
+    print(f'ความแม่นยำสูงสุดอยู่ที่: {Fore.GREEN}{best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
     return best_model, best_accuracy # ส่งค่า best_model และ best_accuracy กลับ
 
 
@@ -103,7 +106,7 @@ def predict_next_attacks(model, data_points, labels, best_accuracy, additional_c
     for new_data in data_points: # วนลูปเพื่อทำการคาดการณ์การโจมตีในแต่ละครั้ง
         prediction = model.predict(new_data.reshape(1, -1)) # คาดการณ์การโจมตีโดยใช้ model.predict() โดยใส่ข้อมูลใหม่ใน new_data และเก็บไว้ในตัวแปร prediction
         predicted_attack = labels.columns[np.argmax(prediction)] # คำนวณค่าการโจมตีที่คาดการณ์ได้จาก prediction และเก็บไว้ในตัวแปร predicted_attack
-        print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {predicted_attack} สูงถึง {best_accuracy:.2f}%") # แสดงข้อความเพื่อแสดงการคาดการณ์การโจมตี
+        print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {Fore.RED}{predicted_attack} สูงถึง {Fore.RED}{best_accuracy:.2f}%\n") # แสดงข้อความเพื่อแสดงการคาดการณ์การโจมตี
         data_dict = {col: val for col, val in zip(additional_columns, new_data)} # สร้าง dict ที่มี key เป็น additional_columns และ value เป็นข้อมูลใน new_data และเก็บไว้ในตัวแปร data_dict
         data_dict['Predicted_Attack_Type'] = predicted_attack # เพิ่ม key 'Predicted_Attack_Type' ใน data_dict และใส่ค่า predicted_attack
         data_dict['Accuracy'] = best_accuracy # เพิ่ม key 'Accuracy' ใน data_dict และใส่ค่า best_accuracy
@@ -133,7 +136,7 @@ def save_predict(prediction_df): # สร้างฟังก์ชัน save_
         
 def plot_graph(accuracy_df, predicted_attack): # สร้างฟังก์ชัน plot_graph ที่รับพารามิเตอร์ 2 ตัวคือ accuracy_df, predicted_attack
     while True:  #เริ่มลูปอย่างต่อเนื่อง
-        plot_gra = input("\nคุณต้องการพล็อตกราฟหรือไม่? (y/n):") # รับค่าจากผู้ใช้ว่าต้องการพล็อตกราฟหรือไม่
+        plot_gra = input("คุณต้องการพล็อตกราฟหรือไม่? (y/n): ") # รับค่าจากผู้ใช้ว่าต้องการพล็อตกราฟหรือไม่
         if plot_gra == 'y': # ถ้าผู้ใช้ต้องการพล็อตกราฟ 
             plt.figure(figsize=(10, 6)) # สร้างกราฟขนาด 10x6 และเก็บไว้ในตัวแปร plt 
             # สร้างกราฟแท่งโดยใช้ sns.barplot() โดยให้ x เป็น 'Predicted', y เป็น 'Accuracy', hue เป็น 'Predicted', palette เป็นสีแดงถ้า attack_type เท่ากับ predicted_attack และสีน้ำเงินถ้าไม่เท่ากัน
