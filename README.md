@@ -18,8 +18,9 @@
         8. pip install matplotlib
         9. pip install seaborn
        10. pip install requests
+       11. pip install colorama
 
-        หรือ pip install numpy scikit-learn tensorflow imbalanced-learn pandas matplotlib seaborn requests smote
+        หรือ pip install numpy scikit-learn tensorflow imbalanced-learn pandas matplotlib seaborn requests smote colorama
 
 #### 2.) นำเข้าไฟล์ CSV ผ่าน args (parser) ใน Terminal
 
