@@ -309,8 +309,8 @@ if __name__ == '__main__': # สร้างบล็อกเพื่อเร
 # |                    |      |      |
 # |                    |      |      |--> Check response status
 # |                    |      |             |
-# |                    |      |             |--> 200: Save file
-# |                    |      |             |--> Other: Print error message
+# |                    |      |             |--> 200 OK: Save file
+# |                    |      |             |--> Other 404: Print error message
 # |                    |      |--> NO: Skip
 # |
 # END
