@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras import layers, models, callbacks 
-from colorama import Fore, Style
+from colorama import Fore
 from imblearn.over_sampling import SMOTE 
 import pandas as pd
 import argparse
@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
 import colorama
+
 
 colorama.init(autoreset=True)
 
@@ -95,7 +96,7 @@ def train_and_evaluate_model(features, labels, patience=10, num_repeats=args.num
  
         # Print the overall progress for each iteration
         percent_complete = ((repeat + 1) / num_repeats) * 100 # คำนวณเปอร์เซ็นต์ของการทำงานทั้งหมดในแต่ละรอบ 
-        print(f'รอบที่ {repeat + 1} สำเร็จแล้ว: {percent_complete:.2f}% Done. ความแม่นยำเฉลี่ยอยู่ที่: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
+        print(f'รอบที่ {repeat + 1} สำเร็จแล้ว: {Fore.GREEN}{percent_complete:.2f}% Done. {Fore.WHITE}ความแม่นยำเฉลี่ยอยู่ที่: {mean_accuracy:.2f}%') # แสดงข้อความเพื่อแสดงความคืบหน้าของการทำงานในแต่ละรอบ
 
     print(f'ความแม่นยำสูงสุดอยู่ที่: {Fore.GREEN}{best_accuracy:.2f}%') # แสดงค่าความแม่นยำที่ดีที่สุด
     return best_model, best_accuracy # ส่งค่า best_model และ best_accuracy กลับ
@@ -106,7 +107,7 @@ def predict_next_attacks(model, data_points, labels, best_accuracy, additional_c
     for new_data in data_points: # วนลูปเพื่อทำการคาดการณ์การโจมตีในแต่ละครั้ง
         prediction = model.predict(new_data.reshape(1, -1)) # คาดการณ์การโจมตีโดยใช้ model.predict() โดยใส่ข้อมูลใหม่ใน new_data และเก็บไว้ในตัวแปร prediction
         predicted_attack = labels.columns[np.argmax(prediction)] # คำนวณค่าการโจมตีที่คาดการณ์ได้จาก prediction และเก็บไว้ในตัวแปร predicted_attack
-        print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {Fore.RED}{predicted_attack} สูงถึง {Fore.RED}{best_accuracy:.2f}%\n") # แสดงข้อความเพื่อแสดงการคาดการณ์การโจมตี
+        print(f"การโจมตีครั้งต่อไปมีโอกาศที่จะเป็น: {Fore.GREEN}{predicted_attack} สูงถึง {Fore.GREEN}{best_accuracy:.2f}%\n") # แสดงข้อความเพื่อแสดงการคาดการณ์การโจมตี
         data_dict = {col: val for col, val in zip(additional_columns, new_data)} # สร้าง dict ที่มี key เป็น additional_columns และ value เป็นข้อมูลใน new_data และเก็บไว้ในตัวแปร data_dict
         data_dict['Predicted_Attack_Type'] = predicted_attack # เพิ่ม key 'Predicted_Attack_Type' ใน data_dict และใส่ค่า predicted_attack
         data_dict['Accuracy'] = best_accuracy # เพิ่ม key 'Accuracy' ใน data_dict และใส่ค่า best_accuracy
@@ -116,7 +117,7 @@ def predict_next_attacks(model, data_points, labels, best_accuracy, additional_c
 
 def save_predict(prediction_df): # สร้างฟังก์ชัน save_predict ที่รับพารามิเตอร์ 1 ตัวคือ prediction_df
     while True:  #เริ่มลูปอย่างต่อเนื่อง
-        save_pre = input("คุณต้องการบันทึกการคาดการณ์การโจมตีครั้งล่าสุดหรือไม่? (y/n): ")
+        save_pre = input(f"คุณต้องการบันทึกการคาดการณ์การโจมตีครั้งล่าสุดหรือไม่? (y/n): ")
         if save_pre == 'y':
             #เช็คว่าไฟล์ Prediction.csv มีอยู่หรือไม่ ถ้ามีให้เพิ่มข้อมูลลงไป ถ้าไม่มีให้สร้างไฟล์ใหม่
             filepath = 'Prediction.csv'
@@ -188,7 +189,8 @@ def aggregate_predictions(model, features, labels): # สร้างฟัง�
 
 def download_file_from_url(url): # สร้างฟังก์ชัน download_file_from_url ที่รับพารามิเตอร์ 1 ตัวคือ url
     response = requests.get(url, allow_redirects=True) # ดาวน์โหลดไฟล์จาก url โดยใช้ requests.get() และเก็บไว้ในตัวแปร response 
-    if response.status_code == 200: # ถ้าสถานะของ response เป็น 200 
+    if response.status_code == 200: # ถ้าสถานะของ response เป็น 200
+        print(f"Status Code: 200 {Fore.GREEN}(OK)") 
         file_name = url.split('/')[-1] # แยกชื่อไฟล์จาก url และเก็บไว้ในตัวแปร file_name 
         save_pre = input(f"คุณต้องการดาวน์โหลดไฟล์คู่มือการป้องกันหรือไม่ (y/n): ") # รับค่าจากผู้ใช้ว่าต้องการดาวน์โหลดไฟล์หรือไม่
         if save_pre.lower() == 'y': # ถ้าผู้ใช้ต้องการดาวน์โหลดไฟล์
@@ -198,11 +200,9 @@ def download_file_from_url(url): # สร้างฟังก์ชัน downl
         else:
             pass 
     else:
-        print(f"ไม่สามารถดาวน์โหลดไฟล์คู่มือการป้องกันได้ โปรดลองอีกครั้ง {response.status_code}") # แสดงข้อความเพื่อแจ้งให้ผู้ใช้ทราบว่าไม่สามารถดาวน์โหลดไฟล์ได้
+        print(f"Status Code: {response.status_code} {Fore.RED}(Failed)") # แสดงข้อความเพื่อแจ้งให้ผู้ใช้ทราบว่าไม่สามารถดาวน์โหลดไฟล์ได้
 
 url = 'https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf' # กำหนด url ของไฟล์คู่มือการป้องกัน
-
-
 
 
 
@@ -235,107 +235,82 @@ if __name__ == '__main__': # สร้างบล็อกเพื่อเร
 
         
     #MInsight Program 
-
-# Start
-#     |
-#     v
-# +---+------------------------------------+
-# | Load and Preprocess Data               |
-# | 1. Read CSV file                       |
-# | 2. Check for numeric columns           |
-# | 3. Fill missing values for numeric cols|
-# | 4. Identify categorical features       |
-# | 5. Encode categorical features         |
-# | 6. Scale features                      |
-# +---+------------------------------------+
-#     |
-#     v
-# +---+------------------------------------+
-# | Create Neural Network Model            |
-# | 1. Define input layer                  |
-# | 2. Add first dense layer with relu     |
-# | 3. Add dropout layer                   |
-# | 4. Add second dense layer with relu    |
-# | 5. Add dropout layer                   |
-# | 6. Define output layer with softmax    |
-# | 7. Compile model with adam optimizer   |
-# +---+------------------------------------+
-#     |
-#     v
-# +---+------------------------------------+
-# | Train and Evaluate Model               |
-# | For each repeat:                       |
-# |   For each fold in K-Fold:             |
-# |     1. Apply SMOTE                     |
-# |     2. Train model with early stopping |
-# |     3. Evaluate model on test data     |
-# |   Update best model if needed          |
-# +---+------------------------------------+
-#     |
-#     v
-# +---+------------------------------------+
-# | Check if better model found            |
-# +---+------------------------------------+
-#     | Yes                          No
-#     |                               |
-#     v                               v
-# +---+------------+          +-------+-------------------+
-# | Update best   |          | Keep current              |
-# | model         |          | best model                |
-# +---+------------+          +-------+-------------------+
-#     |                               |
-#     +------------+------------------+
-#                  |
-#                  v
-# +---+------------------------------------+
-# | Predict Next Attack                    |
-# | 1. Prepare new data point              |
-# | 2. Make prediction using best model    |
-# | 3. Print predicted attack type         |
-# +---+------------------------------------+
-#     |
-#     v
-# +---+------------------------------------+
-# | Ask to Save Prediction                 |
-# +---+------------------------------------+
-#     | Yes                          No
-#     |                               |
-#     v                               v
-# +---+------------+          +-------+-------------------+
-# | Save          |          | Do not save               |
-# | prediction    |          | prediction                |
-# +---+------------+          +-------+-------------------+
-#     |                               |
-#     +------------+------------------+
-#                  |
-#                  v
-# +---+------------------------------------+
-# | Ask to Plot Graph                      |
-# +---+------------------------------------+
-#     | Yes                          No
-#     |                               |
-#     v                               v
-# +---+------------+          +-------+-------------------+
-# | Plot          |          | Do not plot               |
-# | graph         |          | graph                     |
-# +---+------------+          +-------+-------------------+
-#     |                               |
-#     +------------+------------------+
-#                  |
-#                  v
-# +---+------------------------------------+
-# | Ask to Download Prevention Guide       |
-# +---+------------------------------------+
-#     | Yes                          No
-#     |                               |
-#     v                               v
-# +---+------------+          +-------+-------------------+
-# | Download      |          | Do not download           |
-# | prevention    |          | prevention guide          |
-# | guide         |          |                           |
-# +---+------------+          +-------+-------------------+
-#     |
-#     v
-# End
-
-
+    
+# START
+# |
+# |--> Display ASCII art and credit
+# |
+# |---> Parse command-line arguments
+# |      |
+# |      |--> -nr / --num_repeats (default=5)
+# |      |--> -fp / --filepath
+# |
+# |---> Check if filepath is provided
+# |      |
+# |      |--> NO: Print error message and exit
+# |      |
+# |      |--> YES: Proceed
+# |             |
+# |             |--> Load and preprocess data
+# |             |      |
+# |             |      |--> Fill missing numeric values with median
+# |             |      |--> One-hot encode categorical features
+# |             |      |--> Standardize numeric features
+# |             |
+# |             |--> Train and evaluate model
+# |             |      |
+# |             |      |--> Stratified K-fold cross-validation
+# |             |      |      |
+# |             |      |      |--> For each fold:
+# |             |      |             |
+# |             |      |             |--> Apply SMOTE for class imbalance
+# |             |      |             |--> Train model on training data
+# |             |      |             |      |
+# |             |      |             |      |--> Add layers to model
+# |             |      |             |      |--> Compile model
+# |             |      |             |      |--> Fit model with early stopping
+# |             |      |             |--> Evaluate model on test data
+# |             |      |             |--> Update best model and accuracy if needed
+# |             |
+# |             |--> Predict next attacks
+# |             |      |
+# |             |      |--> Use best model to make predictions
+# |             |      |--> Display predicted attack type and accuracy
+# |             |
+# |             |--> Aggregate predictions (Optional)
+# |             |      |
+# |             |      |--> Calculate accuracy for each attack type
+# |             |      |--> Plot accuracy graph (Optional)
+# |             |             |
+# |             |             |--> YES: Plot and display graph
+# |             |             |      |
+# |             |             |      |--> Set up graph parameters
+# |             |             |      |--> Plot bar graph with accuracy data
+# |             |             |      |--> Display graph
+# |             |             |--> NO: Skip
+# |             |
+# |             |--> Save predictions (Optional)
+# |             |      |
+# |             |      |--> Ask user to confirm saving
+# |             |      |      |
+# |             |      |      |--> YES: Append to existing CSV or create new CSV
+# |             |      |      |      |
+# |             |      |      |      |--> Check if file exists
+# |             |      |      |      |      |
+# |             |      |      |      |      |--> YES: Append to file
+# |             |      |      |      |      |--> NO: Create new file
+# |             |      |      |--> NO: Skip
+# |             |
+# |             |--> Download prevention guide (Optional)
+# |                    |
+# |                    |--> Ask user to confirm downloading
+# |                    |      |
+# |                    |      |--> YES: Download file from URL
+# |                    |      |      |
+# |                    |      |      |--> Check response status
+# |                    |      |             |
+# |                    |      |             |--> 200: Save file
+# |                    |      |             |--> Other: Print error message
+# |                    |      |--> NO: Skip
+# |
+# END
