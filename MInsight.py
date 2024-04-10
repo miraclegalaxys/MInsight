@@ -43,7 +43,7 @@ ascii_art = fr'''{Fore.CYAN}
 '''
 print(ascii_art) 
 
-credit = 'Created by: '
+credit = 'Created by: Ryota Kimura Aekkapop Teamkratok and Kittisak Chaukum'
 
 print(f'{credit}\n\n') 
 
