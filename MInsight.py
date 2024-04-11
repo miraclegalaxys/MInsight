@@ -153,10 +153,10 @@ def save_predict(prediction_df): # สร้างฟังก์ชัน save_
             filepath = 'Prediction.csv'
             if os.path.exists(filepath): 
                 prediction_df.to_csv(filepath, mode='a', index=False, header=False)
-                print(f"\nการคาดการณ์การโจมตีครั้งล่าสุดถูกเพิ่มลงในไฟล์ {filepath} แล้ว")
+                print(f"การคาดการณ์การโจมตีครั้งล่าสุดถูกเพิ่มลงในไฟล์ {filepath} แล้ว")
             else:
                 prediction_df.to_csv(filepath, index=False)
-                print(f"\nการคาดการณ์การโจมตีครั้งล่าสุดถูกบันทึกลงในไฟล์ {filepath} แล้ว")
+                print(f"การคาดการณ์การโจมตีครั้งล่าสุดถูกบันทึกลงในไฟล์ {filepath} แล้ว")
             break # ออกจากลูป
         elif save_pre == 'n':
             break # ออกจากลูป
