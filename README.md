@@ -2,7 +2,7 @@
 
 ## Project for CPE 270 AI
 
-## Machine Learning Model
+## Deep Learning Model
 
 ### ขั้นตอนการใช้งานโปรแกรม MInsight
 
